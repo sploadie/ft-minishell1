@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shell_perror.c                                     :+:      :+:    :+:   */
+/*   ft_putfourstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/30 13:54:12 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/19 14:22:15 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/19 14:04:54 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/19 14:05:18 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	shell_perror(char *str)
+void	ft_putfourstr(char *s1, char *s2, char *s3, char *s4)
 {
-	ft_putendl_fd("Error: ", 2);
-	if (str)
-		ft_putendl_fd(str, 2);
-	else
-		ft_putendl_fd("(Error not provided)", 2);
-	ft_putendl_fd("\n", 2);
-	exit(1);
-}
-
-void	*shell_pwarning(char *str)
-{
-	ft_putendl_fd("Error: ", 2);
-	if (str)
-		ft_putendl_fd(str, 2);
-	else
-		ft_putendl_fd("(Error not provided)", 2);
-	ft_putendl_fd("\n", 2);
-	return (NULL);
+	ft_putstr(s1);
+	ft_putstr(s2);
+	ft_putstr(s3);
+	ft_putstr(s4);
 }

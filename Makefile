@@ -6,7 +6,7 @@
 #    By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/20 16:35:37 by tgauvrit          #+#    #+#              #
-#    Updated: 2015/01/17 18:41:02 by tgauvrit         ###   ########.fr        #
+#    Updated: 2015/01/19 14:32:29 by tgauvrit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ SRC_COMPILED =	main.o \
 				add_env_key.o \
 				del_env_key.o \
 				key_str.o \
+				fetch_env_key.o \
+				ft_putfourstr.o \
 				check_malloc.o
 
 COMPILED =		$(SRC_COMPILED)

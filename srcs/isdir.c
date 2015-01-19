@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_str.c                                          :+:      :+:    :+:   */
+/*   isdir.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/17 17:00:21 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/19 14:12:59 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/19 14:39:37 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/19 14:39:59 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*key_key_str(char *env_str)
+int		isdir(char *path)
 {
-	char	*eql_ptr;
+	DIR	*temp_dir;
 
-	if (!(eql_ptr = ft_strchr(env_str, '=')))
-		shell_perror("Invalid variable in the [environ] standard C global");
-	return (ft_strsub(env_str, 0, eql_ptr - env_str));
-}
-
-char	*key_val_str(char *env_str)
-{
-	char	*eql_ptr;
-
-	if (!(eql_ptr = ft_strchr(env_str, '=')))
-		shell_perror("Invalid variable in the [environ] standard C global");
-	return (ft_strdup(eql_ptr + 1));
+	if (!(temp_dir = readdir(path)))
+		return (0);
+	closedir(temp_dir);
+	return (1);
 }

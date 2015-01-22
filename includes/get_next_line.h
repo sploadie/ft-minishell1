@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdir.c                                            :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 14:39:37 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 14:28:17 by tgauvrit         ###   ########.fr       */
+/*   Created: 2014/11/09 16:32:10 by tgauvrit          #+#    #+#             */
+/*   Updated: 2014/11/27 13:23:45 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int		isdir(char *path)
+# include "libft.h"
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <unistd.h>
+
+# define BUF_SIZE 65
+
+typedef struct			s_spill
 {
-	DIR		*temp_dir;
+	char				*text;
+	int					fd;
+	struct s_spill		*next;
+}						t_spill;
 
-	if (!(temp_dir = opendir(path)))
-		return (0);
-	closedir(temp_dir);
-	return (1);
-}
+int						get_next_line(int const fd, char **line);
+
+#endif

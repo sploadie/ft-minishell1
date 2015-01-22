@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdir.c                                            :+:      :+:    :+:   */
+/*   del_input_args.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 14:39:37 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 14:28:17 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/21 16:16:43 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/21 16:26:57 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		isdir(char *path)
-{
-	DIR		*temp_dir;
+/*
+** Sets args to NULL to avoid accidents
+** args->str IS FREED, so no need to free it elsewhere
+*/
 
-	if (!(temp_dir = opendir(path)))
-		return (0);
-	closedir(temp_dir);
-	return (1);
+void	del_input_args(t_args **args)
+{
+	free((*args)->str);
+	free((*args)->args);
+	free(*args);
+	*args = NULL;
 }

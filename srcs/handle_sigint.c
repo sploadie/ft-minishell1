@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdir.c                                            :+:      :+:    :+:   */
+/*   handle_sigint.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 14:39:37 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 14:28:17 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/22 14:55:15 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/22 15:09:09 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		isdir(char *path)
+void	handle_sigint(int sig)
 {
-	DIR		*temp_dir;
-
-	if (!(temp_dir = opendir(path)))
-		return (0);
-	closedir(temp_dir);
-	return (1);
+	(void)sig;
+	write(1, "\n", 1);
+	ft_putstr(PROMPT);
 }

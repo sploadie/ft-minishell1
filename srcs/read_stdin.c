@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdir.c                                            :+:      :+:    :+:   */
+/*   read_stdin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 14:39:37 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 14:28:17 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/22 11:15:49 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/22 15:55:09 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		isdir(char *path)
+void	read_stdin(char **line)
 {
-	DIR		*temp_dir;
+	int	ret;
 
-	if (!(temp_dir = opendir(path)))
-		return (0);
-	closedir(temp_dir);
-	return (1);
+	if ((ret = get_next_line(0, line)) && ft_strcmp(*line, "exit"))
+		return ;
+	if (!ret)
+		write(1, "exit\n", 5);
+	ft_putstr(GOODBYE);
+	free(*line);
+	exit(0);
 }

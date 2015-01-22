@@ -6,7 +6,7 @@
 #    By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/20 16:35:37 by tgauvrit          #+#    #+#              #
-#    Updated: 2015/01/19 14:32:29 by tgauvrit         ###   ########.fr        #
+#    Updated: 2015/01/22 17:46:49 by tgauvrit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,11 @@ NAME =			ft_minishell1
 
 CC =			gcc
 
-FLAGS =			-Wall -Werror -Wextra
+FLAGS =			-Wall -Werror -Wextra -g
 
-HEADER =		./includes/minishell.h ./includes/filedir.h
+HEADER =		./includes/minishell.h \
+				./includes/filedir.h \
+				./includes/get_next_line.h
 
 HEADER_DIR =	-I ./includes/ -I $(FT_LIB_DIR)
 
@@ -31,6 +33,12 @@ FT_LIB_DIR =	./libft/
 SRC_DIR =		./srcs/
 
 SRC_COMPILED =	main.o \
+				handle_sigint.o \
+				interpret_status.o \
+				get_next_line.o \
+				read_stdin.o \
+				ft_strjoinfree.o \
+				isdir.o \
 				filedir.o \
 				del_filedir.o \
 				shell_perror.o \
@@ -42,6 +50,13 @@ SRC_COMPILED =	main.o \
 				key_str.o \
 				fetch_env_key.o \
 				ft_putfourstr.o \
+				parse_input_args.o \
+				get_exec_path.o \
+				fork_exec_with_env.o \
+				append_quote.o \
+				print_env.o \
+				env_key_count.o \
+				del_input_args.o \
 				check_malloc.o
 
 COMPILED =		$(SRC_COMPILED)

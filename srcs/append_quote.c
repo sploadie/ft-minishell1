@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   isdir.c                                            :+:      :+:    :+:   */
+/*   append_quote.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 14:39:37 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 14:28:17 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/20 15:29:08 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/22 11:51:37 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		isdir(char *path)
+char	*append_quote(char *str)
 {
-	DIR		*temp_dir;
+	char	*str_add;
 
-	if (!(temp_dir = opendir(path)))
-		return (0);
-	closedir(temp_dir);
-	return (1);
+	str_add = NULL;
+	ft_putstr(QUOTE_PROMPT);
+	read_stdin(&str_add);
+	ft_strjoinfree(&str, "\n");
+	ft_strjoinfree(&str, str_add);
+	free(str_add);
+	return (str);
 }

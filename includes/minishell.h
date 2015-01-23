@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 17:12:51 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 16:30:10 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 17:22:46 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,12 @@
 
 # define INPUT_MAX_ARGS 200
 # define ESCAPE_CHARS " \t"
-# define WELCOME "\nWelcome to sploadieShell.\nIs it time to play?\n"
-# define GOODBYE "Until next time, sir.\n\n"
-# define PROMPT "\n$pl > "
-# define QUOTE_PROMPT "\" > "
-# define RET_PROMPT "sploadieShell: "
+# define WE "\x1b[32m\nWelcome to sploadieShell.\nIs it time to play?\n\x1b[0m"
+# define WELCOME WE
+# define GOODBYE "\x1b[32mUntil next time, sir.\n\x1b[0m"
+# define PROMPT "\x1b[32m\n$pl > \x1b[0m"
+# define QUOTE_PROMPT "\x1b[32m\" > \x1b[0m"
+# define RET_PROMPT "\x1b[31msploadieShell: \x1b[0m"
 
 typedef struct			s_env_key
 {

@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 17:12:51 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 12:01:04 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 16:30:10 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@
 # include "libft.h"
 # include "filedir.h"
 # include "get_next_line.h"
-
-extern char				**environ;
 
 /*
 ** Permitted functions:
@@ -89,7 +87,8 @@ typedef void			(t_spl_func)(t_args *args, t_env env);
 
 void					shell_perror(char *s);
 void					*shell_pwarning(char *s1, char *s2);
-void					shell_psignal(char *s1, int signum, char *s2, char *signame);
+void					shell_psignal(char *s1, int signum,
+										char *s2, char *signame);
 void					handle_sigint(int sig);
 void					interpret_status(int status);
 
@@ -106,7 +105,7 @@ void					sploadie_env(t_args *args, t_env env);
 
 int						isdir(char *path);
 
-t_env					init_shell_env(void);
+t_env					init_shell_env(char **environ);
 char					*key_key_str(char *env_str);
 char					*key_val_str(char *env_str);
 
@@ -123,7 +122,8 @@ t_args					*parse_input_args(t_env env, char *input, int isalloc);
 void					del_input_args(t_args **args);
 
 char					*get_exec_path(t_env env, char *cmd);
-int						fork_exec_with_env(char *path, char **args, t_env env, int status);
+int						fork_exec_with_env(char *path, char **args,
+											t_env env, int status);
 
 char					*append_quote(t_env env, char *str);
 

@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:36:57 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 11:07:35 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 16:01:49 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,8 @@ static char	*clip_arg(char *str, char **next)
 	char	*curr;
 	int		in_quotes;
 
-	if (!str)
+	if (!(start = str))
 		return (NULL);
-	start = str;
 	curr = str;
 	in_quotes = -1;
 	while (*curr)

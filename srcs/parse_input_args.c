@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:36:57 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 16:48:16 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 11:07:35 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static char	*clip_arg(char *str, char **next)
 	return (start);
 }
 
-t_args		*parse_input_args(char *str, int isalloc)
+t_args		*parse_input_args(t_env env, char *str, int isalloc)
 {
 	t_args	*neoargs;
 	char	*arg_ptrs[INPUT_MAX_ARGS];
@@ -74,7 +74,7 @@ t_args		*parse_input_args(char *str, int isalloc)
 	if (!isalloc)
 		str = ft_strdup(str);
 	if (end_in_quotes(str))
-		return (parse_input_args(append_quote(str), 1));
+		return (parse_input_args(env, append_quote(env, str), 1));
 	neoargs = check_malloc(ft_memalloc(sizeof(t_args)));
 	neoargs->str = str;
 	str = ft_strdup(str);
@@ -83,6 +83,7 @@ t_args		*parse_input_args(char *str, int isalloc)
 	while (arg_ptrs[arg_count])
 		arg_ptrs[arg_count_check(++arg_count)] = clip_arg(str, &str);
 	neoargs->args = ft_memdup(arg_ptrs, sizeof(char *) * (arg_count + 1));
+	neoargs->arg_count = arg_count;
 	free(str);
 	return (neoargs);
 }

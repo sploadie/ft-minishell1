@@ -6,7 +6,7 @@
 #    By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/20 16:35:37 by tgauvrit          #+#    #+#              #
-#    Updated: 2015/01/22 17:46:49 by tgauvrit         ###   ########.fr        #
+#    Updated: 2015/01/23 10:27:12 by tgauvrit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ LIBRARIES =		-L$(FT_LIB_DIR) -l$(FT_LIB_NAME)
 
 FT_LIB_NAME =	ft
 
-FT_LIB =		lib$(FT_LIB_NAME).a
+FT_LIB =		$(FT_LIB_DIR)lib$(FT_LIB_NAME).a
 
 FT_LIB_DIR =	./libft/
 
@@ -36,6 +36,11 @@ SRC_COMPILED =	main.o \
 				handle_sigint.o \
 				interpret_status.o \
 				get_next_line.o \
+				get_spl_function.o \
+				sploadie_cd.o \
+				sploadie_setenv.o \
+				sploadie_unsetenv.o \
+				sploadie_env.o \
 				read_stdin.o \
 				ft_strjoinfree.o \
 				isdir.o \
@@ -73,9 +78,11 @@ $(FT_LIB):
 	@make -C $(FT_LIB_DIR);
 
 clean:
+	make clean -C $(FT_LIB_DIR)
 	-/bin/rm -f $(COMPILED)
 
 fclean: clean
+	make fclean -C $(FT_LIB_DIR)
 	-/bin/rm -f $(NAME)
 
 re: fclean all

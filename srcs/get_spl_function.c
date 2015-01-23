@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_stdin.c                                       :+:      :+:    :+:   */
+/*   get_spl_function.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/22 11:15:49 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 11:07:08 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/23 09:58:15 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/23 10:46:50 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	read_stdin(t_env env, char **line)
+t_spl_func	*get_spl_function(char *str)
 {
-	int	ret;
-
-	if ((ret = get_next_line(0, line)) && ft_strcmp(*line, "exit"))
-		return ;
-	if (!ret)
-		write(1, "exit\n", 5);
-	ft_putstr(GOODBYE);
-	free(*line);
-	chdir(fetch_key_val(env, "OLDPWD"));
-	exit(0);
+	if (!ft_strcmp(str, "cd"))
+		return (&sploadie_cd);
+	if (!ft_strcmp(str, "setenv"))
+		return (&sploadie_setenv);
+	if (!ft_strcmp(str, "unsetenv"))
+		return (&sploadie_unsetenv);
+	if (!ft_strcmp(str, "env"))
+		return (&sploadie_env);
+	return (NULL);
 }

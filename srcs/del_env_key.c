@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 16:57:05 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/17 18:39:49 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 10:25:49 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,18 @@ static void	free_key(t_env_key **dead_key)
 	free(temp_key);
 }
 
-void	del_env_key(t_env env, char *del_key)
+int		del_env_key(t_env env, char *del_key)
 {
 	if (!*env)
-		return ;
+		return (0);
 	else if (!ft_strcmp((*env)->key, del_key))
+	{
 		free_key(env);
+		return (1);
+	}
 	else if (ft_strcmp((*env)->key, del_key) < 0)
-		del_env_key(&((*env)->next), del_key);
+	{
+		return (del_env_key(&((*env)->next), del_key));
+	}
+	return (0);
 }

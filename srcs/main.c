@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 17:13:28 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 17:58:02 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 11:05:41 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 // int			main(int argc, char **argv, char **envp)
 int			main(void)
 {
-	char	**env_ptr;
-	t_env	env;
-	char	*str;
+	// char	**env_ptr;
+	t_env		env;
+	char		*str;
 	// int		i;
-	t_args	*args;
+	t_args		*args;
+	t_spl_func	*spl_function;
 
 	// ft_putstr("Original environ:\n");
 	// env_ptr = environ;
@@ -30,14 +31,14 @@ int			main(void)
 	// 	env_ptr++;
 	// }
 	//DEBUG ENV START
-	ft_putstr("\nSorted environ:\n\n");
-	ft_sort_string_array(environ, -1);
-	env_ptr = environ;
-	while (*env_ptr)
-		ft_putendl(*(env_ptr++));
-	ft_putstr("\nParsed version:\n\n");
+	// ft_putstr("\nSorted environ:\n\n");
+	// ft_sort_string_array(environ, -1);
+	// env_ptr = environ;
+	// while (*env_ptr)
+	// 	ft_putendl(*(env_ptr++));
+	// ft_putstr("\nParsed version:\n\n");
 	env = init_shell_env();
-	print_env(env);
+	// print_env(env);
 	//DEBUG ENV END
 	// ft_putstr("\nDeleted PWD:\n\n");
 	// del_env_key(env, "PWD");
@@ -50,7 +51,7 @@ int			main(void)
 	while (1)
 	{
 		ft_putstr(PROMPT);
-		read_stdin(&str);
+		read_stdin(env, &str);
 		if (!*str)
 		{
 			free(str);
@@ -61,14 +62,19 @@ int			main(void)
 		// ft_putstr(str);
 		// ft_putstr("EOF\n=-=");
 		//DEBUG PRINT END
-		args = parse_input_args(str, 1);
+		args = parse_input_args(env, str, 1);
 		//DEBUG ARG PARSER START
 		// ft_putstr("=-=");
 		// i = 0;
 		// while (args->args[i] != NULL)
 			// ft_putfourstr("\n=-", args->args[i++], "-=", NULL);
 		// ft_putstr("\n=-=\n");
-		if ((str = get_exec_path(env, args->args[0])))
+		// ft_putnbr(args->arg_count);//FIXME
+		// ft_putstr(": ");//FIXME
+		// ft_putendl(args->args[0]);//FIXME
+		if ((spl_function = get_spl_function(args->args[0])))
+			(*spl_function)(args, env);
+		else if ((str = get_exec_path(env, args->args[0])))
 		{
 			// ft_putstr("Command caught: ");
 			// ft_putendl(str);

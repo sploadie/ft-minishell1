@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_stdin.c                                       :+:      :+:    :+:   */
+/*   sploadie_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/22 11:15:49 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 11:07:08 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/23 10:42:01 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/23 10:48:28 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	read_stdin(t_env env, char **line)
+void	sploadie_env(t_args *args, t_env env)
 {
-	int	ret;
-
-	if ((ret = get_next_line(0, line)) && ft_strcmp(*line, "exit"))
-		return ;
-	if (!ret)
-		write(1, "exit\n", 5);
-	ft_putstr(GOODBYE);
-	free(*line);
-	chdir(fetch_key_val(env, "OLDPWD"));
-	exit(0);
+	if (args->arg_count != 1)
+		return ((void)shell_pwarning(args->args[0], ": incorrect number of arguments (1)"));
+	print_env(env);
 }

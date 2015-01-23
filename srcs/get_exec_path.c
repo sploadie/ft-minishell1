@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 14:34:56 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/22 14:51:25 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 11:15:24 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ char	*get_exec_path(t_env env, char *cmd)
 		ft_strcat(path, cmd);
 		if (!access(path, X_OK))
 			return (ft_strdup(path));
-		// ft_putfourstr("\nFailed path (ret: ", ft_itoa(access(path, X_OK)), "): ", path);//FIXME
 		bin = colon + 1;
 	}
 	ft_strcpy(path, bin);
@@ -49,6 +48,5 @@ char	*get_exec_path(t_env env, char *cmd)
 		shell_pwarning("no such file or directory: ", cmd);
 	else
 		shell_pwarning("command not found: ", cmd);
-	// ft_putfourstr("\nFailed path (ret: ", ft_itoa(access(path, X_OK)), "): ", path);//FIXME
 	return (NULL);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 13:42:14 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/19 14:40:07 by tgauvrit         ###   ########.fr       */
+/*   Created: 2015/01/23 11:53:04 by tgauvrit          #+#    #+#             */
+/*   Updated: 2015/01/23 11:53:22 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_env_key	*fetch_env_key(t_env env, char *key_str)
 	return (NULL);
 }
 
-char	*fetch_key_val(t_env env, char *key_str)
+char		*fetch_key_val(t_env env, char *key_str)
 {
 	t_env_key	*key;
 

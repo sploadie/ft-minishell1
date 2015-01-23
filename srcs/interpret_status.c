@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 17:30:44 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 09:46:53 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 12:09:53 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static char	*sig_name(int sig)
 	name = (sig == 14 ? " (SIGALRM: real-time timer expired)" : name);
 	name = (sig == 15 ? " (SIGTERM: software termination signal)" : name);
 	name = (sig == 16 ? " (SIGURG: urgent condition present on socket)" : name);
-	name = (sig == 17 ? " (SIGSTOP: stop (cannot be caught or ignored))" : name);
-	name = (sig == 18 ? " (SIGTSTP: stop signal generated from keyboard)" : name);
+	name = (sig == 17 ? " (SIGSTOP: stop (can't be caught or ignored))" : name);
+	name = (sig == 18 ? " (SIGTSTP: stop signal from keyboard)" : name);
 	name = (sig == 19 ? " (SIGCONT: continue after stop)" : name);
 	name = (sig == 20 ? " (SIGCHLD: child status has changed)" : name);
 	return (name);
@@ -60,7 +60,7 @@ static void	signal_status(int signum)
 	shell_psignal(NULL, signum, " terminated your process", sig_name(signum));
 }
 
-void	interpret_status(int status)
+void		interpret_status(int status)
 {
 	if (WIFEXITED(status))
 		exit_status(WEXITSTATUS(status));

@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/17 15:56:40 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/21 15:25:36 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 12:14:08 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ static t_env_key	*parse_env_key(char **env_ptr)
 {
 	if (*env_ptr == NULL)
 		return (NULL);
-	return (gen_env_key(
-		key_key_str(*env_ptr),
-		key_val_str(*env_ptr),
-		parse_env_key(env_ptr + 1)));
+	return (gen_env_key(key_key_str(*env_ptr), key_val_str(*env_ptr), parse_env_key(env_ptr + 1)));
 }
 
-t_env	init_shell_env(void)
+t_env				init_shell_env(void)
 {
 	t_env		neoenv;
 	t_env_key	*first_key;

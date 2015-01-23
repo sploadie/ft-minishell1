@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 17:12:51 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 11:05:31 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/23 12:01:04 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_args					*parse_input_args(t_env env, char *input, int isalloc);
 void					del_input_args(t_args **args);
 
 char					*get_exec_path(t_env env, char *cmd);
-int						fork_exec_with_env(char *path, char **args, t_env env);
+int						fork_exec_with_env(char *path, char **args, t_env env, int status);
 
 char					*append_quote(t_env env, char *str);
 

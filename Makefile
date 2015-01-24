@@ -6,7 +6,7 @@
 #    By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/20 16:35:37 by tgauvrit          #+#    #+#              #
-#    Updated: 2015/01/23 10:27:12 by tgauvrit         ###   ########.fr        #
+#    Updated: 2015/01/24 12:08:26 by tgauvrit         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME =			ft_minishell1
 
 CC =			gcc
 
-FLAGS =			-Wall -Werror -Wextra -g
+FLAGS =			-Wall -Werror -Wextra
 
 HEADER =		./includes/minishell.h \
 				./includes/filedir.h \
@@ -34,6 +34,7 @@ SRC_DIR =		./srcs/
 
 SRC_COMPILED =	main.o \
 				handle_sigint.o \
+				handle_sigtstp.o \
 				interpret_status.o \
 				get_next_line.o \
 				get_spl_function.o \

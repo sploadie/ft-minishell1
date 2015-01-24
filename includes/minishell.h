@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 17:12:51 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 17:22:46 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/24 11:57:04 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void					*shell_pwarning(char *s1, char *s2);
 void					shell_psignal(char *s1, int signum,
 										char *s2, char *signame);
 void					handle_sigint(int sig);
+void					handle_sigtstp(int sig);
 void					interpret_status(int status);
 
 void					read_stdin(t_env env, char **line);

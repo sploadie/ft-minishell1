@@ -6,7 +6,7 @@
 /*   By: tgauvrit <tgauvrit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/20 17:13:28 by tgauvrit          #+#    #+#             */
-/*   Updated: 2015/01/23 16:36:56 by tgauvrit         ###   ########.fr       */
+/*   Updated: 2015/01/24 12:00:25 by tgauvrit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int			main(int argc, char **argv, char **environ)
 	(void)argv;
 	env = init_shell_env(environ);
 	signal(SIGINT, handle_sigint);
+	signal(SIGCONT, handle_sigint);
 	ft_putstr(str = WELCOME);
 	while (1)
 	{
